@@ -1,0 +1,23 @@
+{
+  "name": "wtframework/dbal",
+  "description": "What the Framework?! DBAL",
+  "license": "MIT",
+  "require": {
+    "php": "^8.2",
+    "wtframework/config": "^0.1",
+    "wtframework/sql": "^0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "WTFramework\\DBAL\\": "src/"
+    }
+  },
+  "require-dev": {
+    "pestphp/pest": "^2.30"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
