@@ -58,9 +58,12 @@ class Connection implements InterfacesConnection
     return $this->raw('?')->bind($value);
   }
 
-  public function raw(string $string): Raw
+  public function raw(
+    string $string,
+    string|int|array $bindings = []
+  ): Raw
   {
-    return new Raw($string);
+    return new Raw($string, $bindings);
   }
 
   public function subquery(string|HasBindings $stmt): Subquery

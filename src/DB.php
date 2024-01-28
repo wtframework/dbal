@@ -134,9 +134,12 @@ abstract class DB implements InterfacesDB
     return static::connection()->partition($name);
   }
 
-  public static function raw(string $string): Raw
+  public static function raw(
+    string $string,
+    string|int|array $bindings = []
+  ): Raw
   {
-    return static::connection()->raw($string);
+    return static::connection()->raw($string, $bindings);
   }
 
   public static function subpartition(string $name): Subpartition

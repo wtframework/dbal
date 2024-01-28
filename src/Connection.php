@@ -129,9 +129,12 @@ class Connection implements InterfacesConnection
     return new Partition($name);
   }
 
-  public function raw(string $string): Raw
+  public function raw(
+    string $string,
+    string|int|array $bindings = []
+  ): Raw
   {
-    return new Raw($string);
+    return new Raw($string, $bindings);
   }
 
   public function subpartition(string $name): Subpartition

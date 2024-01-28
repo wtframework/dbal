@@ -64,9 +64,12 @@ abstract class DB implements InterfacesDB
     return static::connection()->raw('?')->bind($value);
   }
 
-  public static function raw(string $string): Raw
+  public static function raw(
+    string $string,
+    string|int|array $bindings = []
+  ): Raw
   {
-    return static::connection()->raw($string);
+    return static::connection()->raw($string, $bindings);
   }
 
   public static function subquery(string|HasBindings $stmt): Subquery

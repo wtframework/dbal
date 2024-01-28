@@ -237,6 +237,20 @@ it('can get raw sql', function ()
 
 });
 
+it('can get raw sql with bindings', function()
+{
+
+  expect(DB::raw('?', 'test')->bindings())
+  ->toBe(['test']);
+
+  expect(DB::raw('?', 1)->bindings())
+  ->toBe([1]);
+
+  expect(DB::raw('? ?', ['test1', 'test2'])->bindings())
+  ->toBe(['test1', 'test2']);
+
+});
+
 it('can get subquery', function ()
 {
 

@@ -143,6 +143,20 @@ it('can get raw sql', function() use ($connection)
 
 });
 
+it('can get raw sql with bindings', function() use ($connection)
+{
+
+  expect($connection->raw('?', 'test')->bindings())
+  ->toBe(['test']);
+
+  expect($connection->raw('?', 1)->bindings())
+  ->toBe([1]);
+
+  expect($connection->raw('? ?', ['test1', 'test2'])->bindings())
+  ->toBe(['test1', 'test2']);
+
+});
+
 it('can get subquery', function() use ($connection)
 {
 
