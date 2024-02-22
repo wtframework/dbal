@@ -186,3 +186,23 @@ DB::subquery($stmt);
 DB::table($name);
 DB::upsert();
 ```
+
+## Extending the library
+To extend the library you can use the static `macro` method, passing the new method name and a closure to call. This works for both static and non-static methods. This is available on the `DB`, `Connection`, and `Response` classes.
+```php
+use WTFramework\DB\DB;
+
+DB::macro('count', function (string $table)
+{
+
+  return static::select()
+  ->column('COUNT(*) AS counter')
+  ->from($table)
+  ->get()
+  ->counter;
+
+});
+```
+```php
+DB::count('users');
+```
