@@ -7,9 +7,12 @@ namespace WTFramework\DBAL;
 use PDO;
 use PDOStatement;
 use stdClass;
+use WTFramework\SQL\Traits\Macroable;
 
 class Response
 {
+
+  use Macroable;
 
   public function __construct(
     public readonly PDOStatement $stmt,

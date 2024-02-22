@@ -30,11 +30,13 @@ use WTFramework\SQL\Services\Subquery;
 use WTFramework\SQL\Services\Table;
 use WTFramework\SQL\Services\Upsert;
 use WTFramework\SQL\Services\Window;
+use WTFramework\SQL\Traits\Macroable;
 
 class Connection implements InterfacesConnection
 {
 
   use ConnectionConnection;
+  use Macroable;
 
   public function alter(): Alter
   {

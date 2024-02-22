@@ -189,3 +189,19 @@ it('can get upsert', function() use ($connection)
   ->toBe('DO NOTHING');
 
 });
+
+it('can add macro', function () use ($connection)
+{
+
+  Connection::macro('test', function (bool $bool)
+  {
+    return $bool;
+  });
+
+  expect(Connection::test(true))
+  ->toBeTrue();
+
+  expect($connection->test(false))
+  ->toBeFalse();
+
+});

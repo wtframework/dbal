@@ -17,11 +17,13 @@ use WTFramework\SQL\Services\Raw;
 use WTFramework\SQL\Services\Subquery;
 use WTFramework\SQL\Services\Table;
 use WTFramework\SQL\Services\Upsert;
+use WTFramework\SQL\Traits\Macroable;
 
 class Connection implements InterfacesConnection
 {
 
   use ConnectionConnection;
+  use Macroable;
 
   public function delete(): Delete
   {

@@ -431,3 +431,16 @@ it('can get window', function ()
   ->toBe('w');
 
 });
+
+it('can add macro', function ()
+{
+
+  DB::macro('test', function (bool $bool)
+  {
+    return $bool;
+  });
+
+  expect(DB::test(true))
+  ->toBeTrue();
+
+});

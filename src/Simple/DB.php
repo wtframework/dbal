@@ -18,11 +18,13 @@ use WTFramework\SQL\Services\Raw;
 use WTFramework\SQL\Services\Subquery;
 use WTFramework\SQL\Services\Table;
 use WTFramework\SQL\Services\Upsert;
+use WTFramework\SQL\Traits\Macroable;
 
 abstract class DB implements InterfacesDB
 {
 
   use DBConnection;
+  use Macroable;
 
   public static function connection(string $name = null): Connection
   {

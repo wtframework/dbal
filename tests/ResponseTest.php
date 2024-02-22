@@ -34,3 +34,23 @@ it('can get array of results', function () use ($pdo)
   ]);
 
 });
+
+it('can add macro', function () use ($pdo)
+{
+
+  Response::macro('test', function (bool $bool)
+  {
+    return $bool;
+  });
+
+  expect(Response::test(true))
+  ->toBeTrue();
+
+  $response = new Response(
+    $pdo->prepare("SELECT ? AS test"), 1
+  );
+
+  expect($response->test(false))
+  ->toBeFalse();
+
+});

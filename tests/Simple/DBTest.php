@@ -283,3 +283,16 @@ it('can get upsert', function ()
   ->toBe('DO NOTHING');
 
 });
+
+it('can add macro', function ()
+{
+
+  DB::macro('test', function (bool $bool)
+  {
+    return $bool;
+  });
+
+  expect(DB::test(true))
+  ->toBeTrue();
+
+});
