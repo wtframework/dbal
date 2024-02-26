@@ -205,3 +205,23 @@ it('can add macro', function () use ($connection)
   ->toBeFalse();
 
 });
+
+it('can get logs', function () use ($connection)
+{
+
+  $connection->clearLogs();
+
+  expect($connection->logs())
+  ->toBe([]);
+
+  $connection->unprepared($sql1 = "SELECT 1");
+
+  $connection->prepare($sql2 = "SELECT ?", $bindings = [1]);
+
+  expect($connection->logs())
+  ->toBe([
+    [$sql1],
+    [$sql2, $bindings]
+  ]);
+
+});

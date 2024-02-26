@@ -19,6 +19,8 @@ trait ConnectionConnection
 
   use UseGrammar;
 
+  protected array $logs = [];
+
   public function __construct(public readonly PDO $pdo) {}
 
   public static function connect(#[\SensitiveParameter] array $config = []): static
@@ -39,7 +41,11 @@ trait ConnectionConnection
 
   public function unprepared(string|Statement $stmt): Response
   {
-    return new Response($this->pdo->query($stmt));
+
+    $this->logs[] = [$sql = (string) $stmt];
+
+    return new Response($this->pdo->query($sql));
+
   }
 
   public function prepare(
@@ -51,6 +57,8 @@ trait ConnectionConnection
     $sql = (string) $stmt;
 
     $bindings = $stmt instanceof HasBindings ? $stmt->bindings() : $bindings;
+
+    $this->logs[] = [$sql, $bindings];
 
     return new Response($this->pdo->prepare($sql), $bindings);
 
@@ -131,6 +139,16 @@ trait ConnectionConnection
   public function rollBack(): void
   {
     $this->pdo->rollBack();
+  }
+
+  public function logs(): array
+  {
+    return $this->logs;
+  }
+
+  public function clearLogs(): void
+  {
+    $this->logs = [];
   }
 
 }

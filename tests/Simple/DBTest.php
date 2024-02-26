@@ -296,3 +296,23 @@ it('can add macro', function ()
   ->toBeTrue();
 
 });
+
+it('can get logs', function ()
+{
+
+  DB::clearLogs();
+
+  expect(DB::logs())
+  ->toBe([]);
+
+  DB::unprepared($sql1 = "SELECT 1");
+
+  DB::prepare($sql2 = "SELECT ?", $bindings = [1]);
+
+  expect(DB::logs())
+  ->toBe([
+    [$sql1],
+    [$sql2, $bindings]
+  ]);
+
+});

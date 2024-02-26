@@ -82,4 +82,14 @@ trait DBConnection
     static::connection()->rollBack();
   }
 
+  public static function logs(): array
+  {
+    return static::connection()->logs();
+  }
+
+  public static function clearLogs(): void
+  {
+    static::connection()->clearLogs();
+  }
+
 }
