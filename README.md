@@ -161,32 +161,6 @@ DB::upsert();
 DB::window($name);
 ```
 
-## Simple DBAL
-A simple implementation of the library is also provided, using the Simple implementation of the [SQL](https://github.com/wtframework/sql?tab=readme-ov-file#simple-sql) library.
-
-### Supported statements
-```php
-use WTFramework\DBAL\Simple\DB;
-
-DB::delete();
-DB::insert();
-DB::replace();
-DB::select();
-DB::truncate();
-DB::update();
-```
-
-### Supported services
-```php
-use WTFramework\DBAL\Simple\DB;
-
-DB::bind($value);
-DB::raw($string);
-DB::subquery($stmt);
-DB::table($name);
-DB::upsert();
-```
-
 ## Extending the library
 To extend the library you can use the static `macro` method, passing the new method name and a closure to call. This works for both static and non-static methods. This is available on the `DB`, `Connection`, and `Response` classes.
 ```php

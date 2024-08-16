@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use WTFramework\DBAL\DB;
-use WTFramework\DBAL\Simple\DB as SimpleDB;
 
 function createTable(string $name): void
 {
@@ -20,14 +19,5 @@ function createTable(string $name): void
     ->primaryKey()
     ->autoIncrement()
   )();
-
-}
-
-function simpleCreateTable(string $name): void
-{
-
-  SimpleDB::unprepared("DROP TABLE IF EXISTS $name");
-
-  SimpleDB::unprepared("CREATE TABLE $name (id INTEGER PRIMARY KEY AUTOINCREMENT)");
 
 }
