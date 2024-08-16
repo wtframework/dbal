@@ -5,7 +5,7 @@
   "require": {
     "php": "^8.2",
     "wtframework/config": "^0.1",
-    "wtframework/sql": "^0.1"
+    "wtframework/sql": "^0.2"
   },
   "autoload": {
     "psr-4": {
