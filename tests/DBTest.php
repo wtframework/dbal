@@ -5,7 +5,6 @@ declare(strict_types=1);
 use WTFramework\Config\Config;
 use WTFramework\DBAL\Connection;
 use WTFramework\DBAL\DB;
-use WTFramework\DBAL\Drivers\SQLite;
 use WTFramework\DBAL\Response;
 use WTFramework\DBAL\Statements\Alter;
 use WTFramework\DBAL\Statements\Create;
@@ -40,6 +39,11 @@ beforeAll(function ()
       'connections' => [
         'sqlite1' => [],
         'sqlite2' => [],
+        'sqlite3' => [
+          'options' => [
+            PDO::ATTR_CASE => PDO::CASE_LOWER,
+          ]
+        ]
       ]
     ]
   ]);
@@ -51,6 +55,17 @@ it('can connect', function ()
 
   expect(DB::connection())
   ->toBeInstanceOf(Connection::class);
+
+});
+
+it('can connect with options', function ()
+{
+
+  expect(DB::connection()->pdo->getAttribute(PDO::ATTR_CASE))
+  ->toBe(PDO::CASE_NATURAL);
+
+  expect(DB::connection('sqlite3')->pdo->getAttribute(PDO::ATTR_CASE))
+  ->toBe(PDO::CASE_LOWER);
 
 });
 

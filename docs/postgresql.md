@@ -22,6 +22,9 @@ Config::set([
         'port' => 5432,
         'dbname' => 'database',
         'sslmode' => 'prefer',
+        'options' => [
+          PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ],
       ],
     ],
   ],

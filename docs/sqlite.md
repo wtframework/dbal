@@ -17,6 +17,9 @@ Config::set([
       'sqlite' => [
         'driver' => SQLite::class,
         'database' => ':memory:',
+        'options' => [
+          PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ],
       ],
     ],
   ],

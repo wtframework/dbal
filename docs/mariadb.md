@@ -23,6 +23,9 @@ Config::set([
         'dbname' => 'database',
         'unix_socket' => '',
         'charset' => 'utf8mb4',
+        'options' => [
+          PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ],
       ],
     ],
   ],

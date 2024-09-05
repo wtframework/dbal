@@ -20,6 +20,9 @@ Config::set([
         'password' => 'password',
         'Server' => '127.0.0.1',
         'Database' => 'database',
+        'options' => [
+          PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ],
       ],
     ],
   ],

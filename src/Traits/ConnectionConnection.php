@@ -32,7 +32,7 @@ trait ConnectionConnection
       $driver::dsn($config),
       $config['username'] ?? null,
       $config['password'] ?? null,
-      [PDO::ATTR_EMULATE_PREPARES => false]
+      ($config['options'] ?? []) + [PDO::ATTR_EMULATE_PREPARES => false]
     ));
 
     return $connection->use($driver::$grammar);
