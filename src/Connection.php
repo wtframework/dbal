@@ -38,14 +38,14 @@ class Connection implements InterfacesConnection
   use ConnectionConnection;
   use Macroable;
 
-  public function alter(): Alter
+  public function alter(string|HasBindings|null $table = null): Alter
   {
-    return (new Alter($this))->use($this->grammar);
+    return (new Alter($this, $table))->use($this->grammar);
   }
 
-  public function create(): Create
+  public function create(string|HasBindings|null $table = null): Create
   {
-    return (new Create($this))->use($this->grammar);
+    return (new Create($this, $table))->use($this->grammar);
   }
 
   public function createIndex(string $index): CreateIndex
@@ -58,9 +58,9 @@ class Connection implements InterfacesConnection
     return (new Delete($this))->use($this->grammar);
   }
 
-  public function drop(): Drop
+  public function drop(string|HasBindings|null $table = null): Drop
   {
-    return (new Drop($this))->use($this->grammar);
+    return (new Drop($this, $table))->use($this->grammar);
   }
 
   public function dropIndex(string|array $index): DropIndex
@@ -83,9 +83,9 @@ class Connection implements InterfacesConnection
     return (new Select($this))->use($this->grammar);
   }
 
-  public function truncate(): Truncate
+  public function truncate(string|HasBindings|null $table = null): Truncate
   {
-    return (new Truncate($this))->use($this->grammar);
+    return (new Truncate($this, $table))->use($this->grammar);
   }
 
   public function update(): Update

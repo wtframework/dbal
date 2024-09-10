@@ -199,6 +199,9 @@ it('can alter', function ()
   expect(DB::alter())
   ->toBeInstanceOf(Alter::class);
 
+  expect((string) DB::alter('test'))
+  ->toBe("ALTER TABLE test");
+
 });
 
 it('can create', function ()
@@ -206,6 +209,9 @@ it('can create', function ()
 
   expect(DB::create())
   ->toBeInstanceOf(Create::class);
+
+  expect((string) DB::create('test'))
+  ->toBe("CREATE TABLE test");
 
 });
 
@@ -233,6 +239,9 @@ it('can drop', function ()
 
   expect(DB::drop())
   ->toBeInstanceOf(Drop::class);
+
+  expect((string) DB::drop('test'))
+  ->toBe("DROP TABLE test");
 
 });
 
@@ -276,6 +285,9 @@ it('can truncate', function ()
 
   expect(DB::truncate())
   ->toBeInstanceOf(Truncate::class);
+
+  expect((string) DB::truncate('test'))
+  ->toBe("TRUNCATE TABLE test");
 
 });
 

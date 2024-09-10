@@ -90,6 +90,9 @@ it('can alter', function () use ($connection)
   expect($connection->alter())
   ->toBeInstanceOf(Alter::class);
 
+  expect((string) $connection->alter('test'))
+  ->toBe("ALTER TABLE test");
+
 });
 
 it('can create', function () use ($connection)
@@ -97,6 +100,9 @@ it('can create', function () use ($connection)
 
   expect($connection->create())
   ->toBeInstanceOf(Create::class);
+
+  expect((string) $connection->create('test'))
+  ->toBe("CREATE TABLE test");
 
 });
 
@@ -124,6 +130,9 @@ it('can drop', function () use ($connection)
 
   expect($connection->drop())
   ->toBeInstanceOf(Drop::class);
+
+  expect((string) $connection->drop('test'))
+  ->toBe("DROP TABLE test");
 
 });
 
@@ -167,6 +176,9 @@ it('can truncate', function () use ($connection)
 
   expect($connection->truncate())
   ->toBeInstanceOf(Truncate::class);
+
+  expect((string) $connection->truncate('test'))
+  ->toBe("TRUNCATE TABLE test");
 
 });
 

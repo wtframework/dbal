@@ -43,14 +43,14 @@ abstract class DB implements InterfacesDB
     return ConnectionContainer::connection($name, Connection::class);
   }
 
-  public static function alter(): Alter
+  public static function alter(string|HasBindings|null $table = null): Alter
   {
-    return static::connection()->alter();
+    return static::connection()->alter($table);
   }
 
-  public static function create(): Create
+  public static function create(string|HasBindings|null $table = null): Create
   {
-    return static::connection()->create();
+    return static::connection()->create($table);
   }
 
   public static function createIndex(string $index): CreateIndex
@@ -63,9 +63,9 @@ abstract class DB implements InterfacesDB
     return static::connection()->delete();
   }
 
-  public static function drop(): Drop
+  public static function drop(string|HasBindings|null $table = null): Drop
   {
-    return static::connection()->drop();
+    return static::connection()->drop($table);
   }
 
   public static function dropIndex(string|HasBindings|array $index): DropIndex
@@ -88,9 +88,9 @@ abstract class DB implements InterfacesDB
     return static::connection()->select();
   }
 
-  public static function truncate(): Truncate
+  public static function truncate(string|HasBindings|null $table = null): Truncate
   {
-    return static::connection()->truncate();
+    return static::connection()->truncate($table);
   }
 
   public static function update(): Update
