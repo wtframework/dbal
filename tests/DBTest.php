@@ -232,6 +232,9 @@ it('can delete', function ()
   expect(DB::delete())
   ->toBeInstanceOf(Delete::class);
 
+  expect((string) DB::delete('test'))
+  ->toBe("DELETE FROM test");
+
 });
 
 it('can drop', function ()
@@ -262,6 +265,9 @@ it('can insert', function ()
   expect(DB::insert())
   ->toBeInstanceOf(Insert::class);
 
+  expect((string) DB::insert('test'))
+  ->toBe("INSERT INTO test DEFAULT VALUES");
+
 });
 
 it('can replace', function ()
@@ -270,6 +276,9 @@ it('can replace', function ()
   expect(DB::replace())
   ->toBeInstanceOf(Replace::class);
 
+  expect((string) DB::replace('test'))
+  ->toBe("REPLACE INTO test DEFAULT VALUES");
+
 });
 
 it('can select', function ()
@@ -277,6 +286,9 @@ it('can select', function ()
 
   expect(DB::select())
   ->toBeInstanceOf(Select::class);
+
+  expect((string) DB::select('test'))
+  ->toBe("SELECT * FROM test");
 
 });
 
@@ -296,6 +308,9 @@ it('can update', function ()
 
   expect(DB::update())
   ->toBeInstanceOf(Update::class);
+
+  expect((string) DB::update('test'))
+  ->toBe("UPDATE test");
 
 });
 

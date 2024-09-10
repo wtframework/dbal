@@ -43,12 +43,12 @@ abstract class DB implements InterfacesDB
     return ConnectionContainer::connection($name, Connection::class);
   }
 
-  public static function alter(string|HasBindings|null $table = null): Alter
+  public static function alter(string|HasBindings $table = null): Alter
   {
     return static::connection()->alter($table);
   }
 
-  public static function create(string|HasBindings|null $table = null): Create
+  public static function create(string|HasBindings $table = null): Create
   {
     return static::connection()->create($table);
   }
@@ -58,12 +58,12 @@ abstract class DB implements InterfacesDB
     return static::connection()->createIndex($index);
   }
 
-  public static function delete(): Delete
+  public static function delete(string|HasBindings|array $table = null): Delete
   {
-    return static::connection()->delete();
+    return static::connection()->delete($table);
   }
 
-  public static function drop(string|HasBindings|null $table = null): Drop
+  public static function drop(string|HasBindings|array $table = null): Drop
   {
     return static::connection()->drop($table);
   }
@@ -73,29 +73,29 @@ abstract class DB implements InterfacesDB
     return static::connection()->dropIndex($index);
   }
 
-  public static function insert(): Insert
+  public static function insert(string|HasBindings|array $table = null): Insert
   {
-    return static::connection()->insert();
+    return static::connection()->insert($table);
   }
 
-  public static function replace(): Replace
+  public static function replace(string|HasBindings|array $table = null): Replace
   {
-    return static::connection()->replace();
+    return static::connection()->replace($table);
   }
 
-  public static function select(): Select
+  public static function select(string|HasBindings|array $table = null): Select
   {
-    return static::connection()->select();
+    return static::connection()->select($table);
   }
 
-  public static function truncate(string|HasBindings|null $table = null): Truncate
+  public static function truncate(string|HasBindings|array $table = null): Truncate
   {
     return static::connection()->truncate($table);
   }
 
-  public static function update(): Update
+  public static function update(string|HasBindings|array $table = null): Update
   {
-    return static::connection()->update();
+    return static::connection()->update($table);
   }
 
   public static function bind(string|int $value): Raw

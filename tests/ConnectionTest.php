@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use WTFramework\DBAL\Connection;
-use WTFramework\DBAL\Drivers\SQLite;
 use WTFramework\DBAL\Response;
 use WTFramework\DBAL\Statements\Alter;
 use WTFramework\DBAL\Statements\Create;
@@ -123,6 +122,9 @@ it('can delete', function () use ($connection)
   expect($connection->delete())
   ->toBeInstanceOf(Delete::class);
 
+  expect((string) $connection->delete('test'))
+  ->toBe("DELETE FROM test");
+
 });
 
 it('can drop', function () use ($connection)
@@ -153,6 +155,9 @@ it('can insert', function () use ($connection)
   expect($connection->insert())
   ->toBeInstanceOf(Insert::class);
 
+  expect((string) $connection->insert('test'))
+  ->toBe("INSERT INTO test VALUES ()");
+
 });
 
 it('can replace', function () use ($connection)
@@ -161,6 +166,9 @@ it('can replace', function () use ($connection)
   expect($connection->replace())
   ->toBeInstanceOf(Replace::class);
 
+  expect((string) $connection->replace('test'))
+  ->toBe("REPLACE INTO test VALUES ()");
+
 });
 
 it('can select', function () use ($connection)
@@ -168,6 +176,9 @@ it('can select', function () use ($connection)
 
   expect($connection->select())
   ->toBeInstanceOf(Select::class);
+
+  expect((string) $connection->select('test'))
+  ->toBe("SELECT * FROM test");
 
 });
 
@@ -187,6 +198,9 @@ it('can update', function () use ($connection)
 
   expect($connection->update())
   ->toBeInstanceOf(Update::class);
+
+  expect((string) $connection->update('test'))
+  ->toBe("UPDATE test");
 
 });
 

@@ -48,16 +48,16 @@
         },
         {
             "name": "wtframework/sql",
-            "version": "v0.2.5",
+            "version": "v0.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wtframework/sql.git",
-                "reference": "0bdb304ce474c69a9aadbfe2f382ae8a0a0c29d2"
+                "reference": "7a6ccd1e2de5e33fe9238408c2e9058a299399b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wtframework/sql/zipball/0bdb304ce474c69a9aadbfe2f382ae8a0a0c29d2",
-                "reference": "0bdb304ce474c69a9aadbfe2f382ae8a0a0c29d2",
+                "url": "https://api.github.com/repos/wtframework/sql/zipball/7a6ccd1e2de5e33fe9238408c2e9058a299399b2",
+                "reference": "7a6ccd1e2de5e33fe9238408c2e9058a299399b2",
                 "shasum": ""
             },
             "require": {
@@ -79,9 +79,9 @@
             "description": "What the Framework?! SQL",
             "support": {
                 "issues": "https://github.com/wtframework/sql/issues",
-                "source": "https://github.com/wtframework/sql/tree/v0.2.5"
+                "source": "https://github.com/wtframework/sql/tree/v0.2.6"
             },
-            "time": "2024-09-10T12:40:30+00:00"
+            "time": "2024-09-10T17:18:54+00:00"
         }
     ],
     "packages-dev": [

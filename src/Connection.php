@@ -53,12 +53,12 @@ class Connection implements InterfacesConnection
     return (new CreateIndex($this, $index))->use($this->grammar);
   }
 
-  public function delete(): Delete
+  public function delete(string|HasBindings|array|null $table = null): Delete
   {
-    return (new Delete($this))->use($this->grammar);
+    return (new Delete($this, $table))->use($this->grammar);
   }
 
-  public function drop(string|HasBindings|null $table = null): Drop
+  public function drop(string|HasBindings|array|null $table = null): Drop
   {
     return (new Drop($this, $table))->use($this->grammar);
   }
@@ -68,29 +68,29 @@ class Connection implements InterfacesConnection
     return (new DropIndex($this, $index))->use($this->grammar);
   }
 
-  public function insert(): Insert
+  public function insert(string|HasBindings|array|null $table = null): Insert
   {
-    return (new Insert($this))->use($this->grammar);
+    return (new Insert($this, $table))->use($this->grammar);
   }
 
-  public function replace(): Replace
+  public function replace(string|HasBindings|array|null $table = null): Replace
   {
-    return (new Replace($this))->use($this->grammar);
+    return (new Replace($this, $table))->use($this->grammar);
   }
 
-  public function select(): Select
+  public function select(string|HasBindings|array|null $table = null): Select
   {
-    return (new Select($this))->use($this->grammar);
+    return (new Select($this, $table))->use($this->grammar);
   }
 
-  public function truncate(string|HasBindings|null $table = null): Truncate
+  public function truncate(string|HasBindings|array|null $table = null): Truncate
   {
     return (new Truncate($this, $table))->use($this->grammar);
   }
 
-  public function update(): Update
+  public function update(string|HasBindings|array|null $table = null): Update
   {
-    return (new Update($this))->use($this->grammar);
+    return (new Update($this, $table))->use($this->grammar);
   }
 
   public function bind(string|int $value): Raw
