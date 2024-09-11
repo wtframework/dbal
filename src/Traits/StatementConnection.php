@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WTFramework\DBAL\Traits;
 
+use stdClass;
 use WTFramework\DBAL\Interfaces\Connection;
 use WTFramework\DBAL\Response;
 
@@ -33,7 +34,7 @@ trait StatementConnection
     return $this->prepare()->execute();
   }
 
-  public function get(): ?object
+  public function get(): ?stdClass
   {
     return $this->execute()->get();
   }
