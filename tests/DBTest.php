@@ -20,6 +20,7 @@ use WTFramework\DBAL\Statements\Update;
 use WTFramework\SQL\Services\Column;
 use WTFramework\SQL\Services\Constraint;
 use WTFramework\SQL\Services\CTE;
+use WTFramework\SQL\Services\ForeignKey;
 use WTFramework\SQL\Services\Index;
 use WTFramework\SQL\Services\Outfile;
 use WTFramework\SQL\Services\Partition;
@@ -361,14 +362,25 @@ it('can get cte', function ()
 
 });
 
+it('can get foreign key', function ()
+{
+
+  expect($stmt = DB::foreignKey('c1'))
+  ->toBeInstanceOf(ForeignKey::class);
+
+  expect((string) $stmt)
+  ->toBe("FOREIGN KEY (c1)");
+
+});
+
 it('can get index', function ()
 {
 
-  expect($index = DB::index('i0'))
+  expect($index = DB::index('c1', 'i1'))
   ->toBeInstanceOf(Index::class);
 
   expect((string) $index)
-  ->toBe("INDEX i0");
+  ->toBe("INDEX i1 (c1)");
 
 });
 

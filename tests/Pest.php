@@ -7,17 +7,14 @@ use WTFramework\DBAL\DB;
 function createTable(string $name): void
 {
 
-  DB::drop()
-  ->table($name)
-  ->ifExists()();
+  DB::drop($name)->ifExists()();
 
-  DB::create()
-  ->table($name)
-  ->column(
-    DB::column('id')
-    ->integer()
-    ->primaryKey()
-    ->autoIncrement()
-  )();
+  $table = DB::create($name);
+
+  $table->integer('id')
+  ->primaryKey()
+  ->autoIncrement();
+
+  $table();
 
 }

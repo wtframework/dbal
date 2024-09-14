@@ -5,7 +5,7 @@
   "require": {
     "php": "^8.2",
     "wtframework/config": "^0.1",
-    "wtframework/sql": "^0.2"
+    "wtframework/sql": "^0.3"
   },
   "autoload": {
     "psr-4": {
@@ -13,7 +13,7 @@
     }
   },
   "require-dev": {
-    "pestphp/pest": "^2.30"
+    "pestphp/pest": "^3.0"
   },
   "config": {
     "allow-plugins": {

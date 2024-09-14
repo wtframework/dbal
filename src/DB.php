@@ -21,6 +21,7 @@ use WTFramework\SQL\Interfaces\HasBindings;
 use WTFramework\SQL\Services\Column;
 use WTFramework\SQL\Services\Constraint;
 use WTFramework\SQL\Services\CTE;
+use WTFramework\SQL\Services\ForeignKey;
 use WTFramework\SQL\Services\Index;
 use WTFramework\SQL\Services\Outfile;
 use WTFramework\SQL\Services\Partition;
@@ -121,9 +122,17 @@ abstract class DB implements InterfacesDB
     return static::connection()->cte($name, $stmt);
   }
 
-  public static function index(string $name = ''): Index
+  public static function foreignKey(string|array $column): ForeignKey
   {
-    return static::connection()->index($name);
+    return static::connection()->foreignKey($column);
+  }
+
+  public static function index(
+    string|array $column,
+    string $name = ''
+  ): Index
+  {
+    return static::connection()->index($column, $name);
   }
 
   public static function outfile(string $path): Outfile

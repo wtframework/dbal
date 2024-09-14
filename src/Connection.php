@@ -21,6 +21,7 @@ use WTFramework\SQL\Interfaces\HasBindings;
 use WTFramework\SQL\Services\Column;
 use WTFramework\SQL\Services\Constraint;
 use WTFramework\SQL\Services\CTE;
+use WTFramework\SQL\Services\ForeignKey;
 use WTFramework\SQL\Services\Index;
 use WTFramework\SQL\Services\Outfile;
 use WTFramework\SQL\Services\Partition;
@@ -116,9 +117,17 @@ class Connection implements InterfacesConnection
     return new CTE($name, $stmt);
   }
 
-  public function index(string $name = ''): Index
+  public function foreignKey(string|array $column): ForeignKey
   {
-    return new Index($name);
+    return new ForeignKey($column);
+  }
+
+  public function index(
+    string|array $column,
+    string $name = ''
+  ): Index
+  {
+    return new Index($column, $name);
   }
 
   public function outfile(string $path): Outfile

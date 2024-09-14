@@ -18,6 +18,7 @@ use WTFramework\DBAL\Statements\Update;
 use WTFramework\SQL\Services\Column;
 use WTFramework\SQL\Services\Constraint;
 use WTFramework\SQL\Services\CTE;
+use WTFramework\SQL\Services\ForeignKey;
 use WTFramework\SQL\Services\Index;
 use WTFramework\SQL\Services\Outfile;
 use WTFramework\SQL\Services\Partition;
@@ -108,11 +109,11 @@ it('can create', function () use ($connection)
 it('can create index', function () use ($connection)
 {
 
-  expect($stmt = $connection->createIndex('i0'))
+  expect($stmt = $connection->createIndex('i1'))
   ->toBeInstanceOf(CreateIndex::class);
 
   expect((string) $stmt)
-  ->toBe("CREATE INDEX i0");
+  ->toBe("CREATE INDEX i1");
 
 });
 
@@ -251,14 +252,25 @@ it('can get cte', function() use ($connection)
 
 });
 
+it('can get foreign key', function () use ($connection)
+{
+
+  expect($stmt = $connection->foreignKey('c1'))
+  ->toBeInstanceOf(ForeignKey::class);
+
+  expect((string) $stmt)
+  ->toBe("FOREIGN KEY (c1)");
+
+});
+
 it('can get index', function() use ($connection)
 {
 
-  expect($index = $connection->index('i0'))
+  expect($index = $connection->index('c1', 'i1'))
   ->toBeInstanceOf(Index::class);
 
   expect((string) $index)
-  ->toBe("INDEX i0");
+  ->toBe("INDEX i1 (c1)");
 
 });
 
