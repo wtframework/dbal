@@ -1,3 +1,5 @@
+### Superseded by https://github.com/MichaelRushton/php-database
+
 # What the Framework?! DBAL
 This library extends the [SQL](https://github.com/wtframework/sql) library with a wrapper for PDO.
 
